@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +25,7 @@ public class ControlProductPage extends PageBase{
 	WebElement SelectColBlack;
 	@FindBy(xpath="//button[@name='Submit']")
 	WebElement  SelectCartBtn;
-	@FindBy(xpath="//a[@class='btn btn-default button button-medium']")
+	@FindBy(xpath="//a[@title='Proceed to checkout']")
 	WebElement  ProcedToCheckOutbtn;
 	@FindBy(xpath="//*[@id=\"layer_cart\"]/div[1]/div[1]/h2")
 	WebElement successMessage;
@@ -47,7 +48,7 @@ public class ControlProductPage extends PageBase{
 
 
 
-	public void addToCart(String x,String size)
+	public void addToCart(String x,String size) 
 	{
 		QuantityWtdfld.clear();
 		QuantityWtdfld.sendKeys(x);
@@ -55,7 +56,26 @@ public class ControlProductPage extends PageBase{
 		Select select= new Select(Siz);
 		select.selectByVisibleText(size);
 		SelectCartBtn.click();
-		ProcedToCheckOutbtn.click();
+		
+		 try {
+				Thread.sleep(4000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 
+		 ProcedToCheckOutbtn.click();
+//        Alert alert = driver.switchTo().alert();		
+//		
+//        // Capturing alert message.    
+//        String alertMessage= driver.switchTo().alert().getText();		
+//        		
+//        // Displaying alert message		
+//        System.out.println(alertMessage);
+       
+		
+			
+       
 
 	}
 

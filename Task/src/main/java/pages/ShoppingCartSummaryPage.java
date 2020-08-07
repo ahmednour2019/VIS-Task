@@ -6,13 +6,16 @@ import org.openqa.selenium.support.FindBy;
 
 public class ShoppingCartSummaryPage extends PageBase{
 	
-	@FindBy(xpath="//a[@title='Proceed to checkout']")
+	@FindBy(xpath="//*[@id='center_column']/p[2]/a[1]")
 	WebElement  ProcedToCheckOut2;
 	
-	@FindBy(xpath="//button[@type='submit']")
+	@FindBy(xpath="//*[@id=\"center_column\"]/form/p/button/span")
 	WebElement  ProcedToCheckOut3;
 	
-	@FindBy(id="cgv")
+	@FindBy(xpath="//button[@name='processCarrier']")
+	WebElement  ProcedToCheckOut4;
+	
+	@FindBy(xpath="//input[@type='checkbox']")
 	WebElement  AgreeChkbx;
 	
 	@FindBy(xpath="//a[@title='Pay by bank wire']")
@@ -34,7 +37,7 @@ public class ShoppingCartSummaryPage extends PageBase{
 		ProcedToCheckOut2.click();
 		ProcedToCheckOut3.click();
 		AgreeChkbx.click();
-		ProcedToCheckOut3.click();
+		ProcedToCheckOut4.click();
 		SelectBnkWrOption.click();
 		
 	}

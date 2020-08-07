@@ -13,8 +13,9 @@ import pages.MyAccountPage;
 import pages.ResultedProductPage;
 import pages.ShoppingCartSummaryPage;
 
-public class CheckOutProcedure extends TestBase{
+public class ConfirmOrderTest extends TestBase{
 	
+	// validate that created order is listed on order history
 	
 
 	HomePage homeObject ; 
@@ -77,8 +78,10 @@ public class CheckOutProcedure extends TestBase{
 		shoppingCartSummaryPage.proceedToCheckOut();
 		
 		confirmPaymentOption  = new ConfirmPaymentOption(driver);
-	    Assert.assertEquals(confirmPaymentOption.checkOutCompleted(), "BANK-WIRE PAYMENT.");
+		confirmPaymentOption.confirmOrder();
+		confirmPaymentOption.clickOnBackToOrder();
+		Assert.assertTrue(confirmPaymentOption.getDisplayedOrders());
 		
-	}
+		}
 
 }
